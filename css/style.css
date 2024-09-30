@@ -1,0 +1,266 @@
+body {
+    font-family: 'Comic Sans MS', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+header {
+    background-color: #ff6f61;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 2s;
+}
+
+header .logo img {
+    height: 60px;
+    transition: transform 0.5s;
+}
+
+header .logo img:hover {
+    transform: rotate(360deg);
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    animation: bounceIn 1s;
+}
+
+header nav ul li {
+    margin: 0 15px;
+    transition: transform 0.3s;
+}
+
+header nav ul li:hover {
+    transform: scale(1.2);
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.contato{
+    margin-top: 10px;
+    font-size: 0.9em;
+    animation: fadeIn 2s;
+}
+
+
+
+.highlight img {
+    width: 100%;
+    height: auto;
+    filter: brightness(70%);
+}
+
+.highlight-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 111, 97, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: slideIn 1.5s;
+}
+
+.sobre, .servicos, .produtos, .testemunhas, .blog, .formas-contato {
+    padding: 20px;
+    background-color: #ffcc5c;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 2s;
+}
+
+.sobre h2, .servicos h2, .produtos h2, .testemunhas h2, .blog h2, .formas-contato h2 {
+    text-align: center;
+    color: #333;
+    text-transform: uppercase;
+    animation: fadeInDown 1.5s;
+}
+
+.time {
+    margin-top: 15px;
+    color: #555;
+}
+
+.servicos ul {
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.servicos ul li {
+    background: #ff6f61;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    animation: bounceIn 1.5s;
+    transition: background-color 0.5s, transform 0.5s;
+}
+
+.servicos ul li:hover {
+    background-color: #333;
+    transform: rotate(-5deg);
+}
+
+.galeria-produtos {
+    display: flex;
+    justify-content: space-around;
+    animation: fadeInUp 2s;
+}
+
+.produto-item {
+    text-align: center;
+    background: #ff6f61;
+    padding: 15px;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s;
+}
+
+.produto-item img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.produto-item:hover {
+    transform: scale(1.1);
+}
+
+.produto-item img:hover {
+    transform: rotate(-10deg);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.testemunhas article {
+    text-align: center;
+    font-size: 1.2em;
+    color: #333;
+    font-style: italic;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 2s;
+}
+
+.testemunhas article:hover{
+    background-color: #ff6f61;
+    color: #fff;
+
+}
+.blog article {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.5s;
+    animation: fadeInUp 2s;
+}
+
+.blog article:hover {
+    background-color: #ff6f61;
+    color: #fff;
+}
+
+.formas-contato form {
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 2s;
+}
+
+.formas-contato label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.formas-contato input, .formas-contato textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.formas-contato button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    animation: bounceIn 2s;
+}
+
+.formas-contato button:hover {
+    background-color: #333;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #ff6f61;
+    color: #fff;
+    animation: fadeInUp 2s;
+}
+
+footer .footer-links, footer .redes-sociais {
+    margin-top: 10px;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 5px;
+    transition: color 0.5s;
+}
+
+footer a:hover {
+    color: #333;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-100%); }
+    to { opacity: 1; transform: translateX(0); }
+}
