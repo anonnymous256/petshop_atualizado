@@ -29,11 +29,13 @@
     <section class="Adicionados">
         <h2>Itens Adicionados</h2>
         <div class="itens-container">
-           <img id = "produtoimagem" alt = "Imagem do produto">
-           <p id = "SelecionarProdutos"></p>
+           <img id="produtoimagem" alt="Imagem do produto">
+           <p id="SelecionarProdutos"></p>
+           <p>Quantidade: <span id="quantidade">0</span></p>
+           <p>Total: R$ <span id="total">0.00</span></p>
         </div>
-        <button id = "somar" onclick="somartudo()">mais</button>
-        <button id = "subtrair">menos</button>
+        <button id="adicionar" onclick="adicionarItem()">Adicionar Item</button>
+        <button id="remover" onclick="removerItem()">Remover Item</button>
     </section>
 
     <section class="Cep">
@@ -47,12 +49,12 @@
     <section class="Cupom">
         <h2>Insira um Cupom de desconto</h2>
         <div class="cupom-container">
-            <input type="text" id = "veri_input" placeholder="Digite seu Cupom...">
-            <button id="Botao-cal" onclick = "verificar()">Aplicar</button>
+            <input type="text" id="veri_input" placeholder="Digite seu Cupom...">
+            <button id="Botao-cal" onclick="verificar()">Aplicar</button>
         </div>
     </section>
 
-    <div id ="mensagem">
+    <div id="mensagem">
         <p></p>
     </div>
 
@@ -68,51 +70,77 @@
             <a href="#">Twitter</a>
         </div>
     </footer>
+    
     <script>
         const SelecionarProdutos = localStorage.getItem('produtos');
-    
         
         const produtoimagem = {
-            'produto1': 'assets/racao.jpg',
-            'produto2': 'assets/brinquedo.jpg',
-            'produto3': 'assets/sabaocac.jpg'
+            'produto1': { nome: 'Ração', preco: 20, imagem: 'assets/racao.jpg' },
+            'produto2': { nome: 'Brinquedo', preco: 50, imagem: 'assets/brinquedo.jpg' },
+            'produto3': { nome: 'Sabão', preco: 30, imagem: 'assets/sabaocac.jpg' }
         };
-    
-         
-    
-        document.getElementById('produtoimagem').src = produtoimagem[SelecionarProdutos];
-    
+
+        document.getElementById('produtoimagem').src = produtoimagem[SelecionarProdutos].imagem;
         
-    
-        document.getElementById('produtosdetalhes').textContent = 'Você selecionou o ' + SelecionarProdutos
-    
+        document.getElementById('SelecionarProdutos').textContent = 'Você selecionou o ' + SelecionarProdutos;
 
-function verificar(){
-        var input = document.getElementById("veri_input").value;
-        var aparecer = document.getElementById("mensagem");
-if(input.trim() === "Alisson20"){
-    aparecer.textContent = "Parabens, você ganhou um desconto!!"
-}else if (input.trim() === ""){
-    aparecer.textContent = "Insira alguma coisa";
-}else{
-    aparecer.textContent ="Esse cupom é inválido!!";
-}
-}
-function somartudo(){
-    const selecionado = localStorage.getItem('produtos'); 
-    const detalheProduto = document.getElementById("SelecionarProdutos"); 
+        let quantidade = 0;
+        let desconto = 0; 
 
-    if(selecionado === "produto1"){
-        detalheProduto.textContent = "Ração - R$20"; 
-    } else if(selecionado === "produto2"){
-        detalheProduto.textContent = "Brinquedo - R$50"; 
-    } else if(selecionado === "produto3"){
-        detalheProduto.textContent = "Sabão - R$30"; 
-    } else {
-        detalheProduto.textContent = "Nenhum produto selecionado";
-    }
-}
+        function verificar() {
+            var input = document.getElementById("veri_input").value;
+            var aparecer = document.getElementById("mensagem");
+            if (input.trim() === "Alisson20") {
+                aparecer.textContent = "Parabéns, você ganhou um desconto!!";
+                desconto = 0.20; 
+                atualizarTotal();l
+            } else if (input.trim() === "") {
+                aparecer.textContent = "Insira alguma coisa";
+            } else {
+                aparecer.textContent = "Esse cupom é inválido!!";
+                desconto = 0;
+                atualizarTotal();
+            }
+        }
 
-     </script>
+        function adicionarItem() {
+            quantidade++; 
+            document.getElementById('quantidade').textContent = quantidade; 
+            somartudo(); 
+            atualizarTotal(); 
+        }
+
+        function removerItem() {
+            if (quantidade > 0) {
+                quantidade--; 
+                document.getElementById('quantidade').textContent = quantidade; 
+                somartudo(); 
+                atualizarTotal(); 
+            }
+        }
+
+        function somartudo() {
+            const selecionado = localStorage.getItem('produtos'); 
+            const detalheProduto = document.getElementById("SelecionarProdutos"); 
+
+            if (selecionado && produtoimagem[selecionado]) {
+                detalheProduto.textContent = `${produtoimagem[selecionado].nome} - R$${produtoimagem[selecionado].preco}`;
+            } else {
+                detalheProduto.textContent = "Nenhum produto selecionado";
+            }
+        }
+
+        function atualizarTotal() {
+            const selecionado = localStorage.getItem('produtos');
+            if (selecionado && produtoimagem[selecionado]) {
+                let precoUnitario = produtoimagem[selecionado].preco;
+                let total = precoUnitario * quantidade; 
+                total -= total * desconto; 
+                document.getElementById('total').textContent = total.toFixed(2); 
+            } else {
+                document.getElementById('total').textContent = "0.00"; 
+            }
+        }
+    </script>
 </body>
 </html>
